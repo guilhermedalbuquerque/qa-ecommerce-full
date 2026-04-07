@@ -1,0 +1,46 @@
+# Workflow para rodar automaticamente os testes.
+# Execução feita para cada push/pull request.
+# Configura o ambiente, instala dependências e executa pytest.
+
+name: Test Automation
+
+# Gatilhos
+on:
+  push:
+  pull:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest #  Criar máquina virtual para execução.
+    
+    # Clonar código ná maquina.
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      # Configurar versão do python
+      - name:  Configurar python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Instalar dependências do requerements.txt.
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+
+      # Criar arquivo ".env" para guardar a chave API.
+      - name: Criar arquivo .env
+        run: | 
+          echo "API_KEY=${{ secrets.API_KEY }}" > .env
+      
+      # Instalar Playwright para os testes de interface.
+      - name: Instalar Broswers do Playwright
+        run: |
+          pip install -r requirements.txt
+
+      # Rodar a execução dos testes.
+      - name: Rodar testes
+        run: |
+          pytest
+
