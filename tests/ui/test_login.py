@@ -1,10 +1,8 @@
-# Importa a biblioteca para controle do navegador.
-
 from pages.login_page import LoginPage
 
 
 # Função para abrir e controlar página.
-def test_login_sucess(page):
+def test_login_success(page):
         
     login_page = LoginPage(page)
         
