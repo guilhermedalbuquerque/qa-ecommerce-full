@@ -7,7 +7,7 @@ name: Test Automation
 # Gatilhos
 on:
   push:
-  pull:
+  pull_request:
 
 jobs:
   tests:
