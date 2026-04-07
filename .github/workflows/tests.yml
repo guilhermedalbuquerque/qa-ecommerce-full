@@ -48,7 +48,7 @@ jobs:
       - name: Instalar Allure
         run: |
           sudo apt-get update
-          sudo apt-get install -y allure
+          npm install -g allure-commandline --save-dev
       
       # Gerar relatório
       - name: Gerar relatório Allure
