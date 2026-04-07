@@ -35,9 +35,10 @@ jobs:
           echo "API_KEY=${{ secrets.API_KEY }}" > .env
       
       # Instalar Playwright para os testes de interface.
-      - name: Instalar Broswers do Playwright
+      - name: Instalar Playwright + browsers
         run: |
-          pip install -r requirements.txt
+          pip install playwright
+          playwright install --with-deps
 
       # Rodar a execução dos testes.
       - name: Rodar testes
