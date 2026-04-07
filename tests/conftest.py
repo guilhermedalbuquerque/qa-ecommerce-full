@@ -22,7 +22,7 @@ def api_key():
 @pytest.fixture
 def page():
     with sync_playwright() as p: # Abre o navegador e fecha assim que o bloco terminar.
-        browser = p.chromium.launch(headless=False, slow_mo=2000)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         
         yield page # Entrega a página para o teste
