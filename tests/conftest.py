@@ -1,8 +1,10 @@
 # Fixture para evitar repetição nas requisições dos testes.
 from playwright.sync_api import sync_playwright
+from database.conection import create_table
 import pytest
 from dotenv import load_dotenv
 import os
+import sqlite3
 
 # Carrega variaveis do arquivo ".env".
 load_dotenv()
@@ -28,3 +30,17 @@ def page():
         yield page # Entrega a página para o teste
         
         browser.close()
+        
+# Fixture para banco de dados.
+@pytest.fixture
+def db():
+    # Criar banco na mémoria
+    connect = sqlite3.connect(":memory:")
+    create_table(connect) # Criar a tabela do banco de dados.
+    
+    # Entrega banco para o teste
+    yield connect 
+    
+    connect.close()
+    
+    

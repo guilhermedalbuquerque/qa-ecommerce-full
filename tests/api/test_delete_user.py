@@ -2,12 +2,15 @@
 import requests
 
 # Função para deletar usuário (DELETE)
-def test_delete_user(base_url):
+def test_delete_user(base_url,api_key):
     
     # ID de exemplo para á API
     user_id = 2
     
-    headers = {"x-api-key":"pub_58acb8b41634808136010a9b7bf9e612" }
+    headers = {
+        "x-api-key": api_key
+         
+        }
     
     response = requests.delete(f"{base_url}/users/{user_id}", headers=headers)
     
