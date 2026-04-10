@@ -5,3 +5,4 @@ allure-pytest
 faker
 python-dotenv
 playwright
+psycopg2-binary
