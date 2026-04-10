@@ -20,7 +20,7 @@ jobs:
     # Adicionando Postgres no Workflow.
     services:
       postgres:
-        image: postgres 15
+        image: postgres:15
         env:
           POSTGRES_DB: qa_db
           POSTGRES_PASSWORD: qa_pass
