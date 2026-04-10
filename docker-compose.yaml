@@ -1,0 +1,14 @@
+# Criação de serviço postgres em container.
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: qa_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: qa_user
+      POSTGRES_PASSWORD: qa_pass
+      POSTGRES_DB: qa_db
+    ports:
+      - "5432:5432"
